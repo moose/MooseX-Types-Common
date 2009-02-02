@@ -8,7 +8,7 @@ use Test::Exception;
 {
   package FooTest;
   use Moose;
-  use MooseX::Types::Common (
+  use MooseX::Types::Common::String (
     qw(SimpleStr NonEmptySimpleStr Password StrongPassword NonEmptyStr),
   );
 
