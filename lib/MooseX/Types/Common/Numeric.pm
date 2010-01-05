@@ -3,7 +3,7 @@ package MooseX::Types::Common::Numeric;
 use strict;
 use warnings;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.001001';
 
 use MooseX::Types -declare => [
   qw(PositiveNum PositiveInt NegativeNum NegativeInt SingleDigit)
@@ -36,15 +36,13 @@ subtype SingleDigit,
   where { $_ <= 9 },
   message { "Must be a single digit" };
 
-
 1;
 
 __END__;
 
-
 =head1 NAME
 
-MooseX::Types::Common::Numeric
+MooseX::Types::Common::Numeric - Commonly used numeric types
 
 =head1 SYNOPSIS
 

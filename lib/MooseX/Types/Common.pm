@@ -3,13 +3,13 @@ package MooseX::Types::Common;
 use strict;
 use warnings;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.001001';
 
 1;
 
 =head1 NAME
 
-MooseX::Types::Common
+MooseX::Types::Common - A library of commonly used type constraints
 
 =head1 SYNOPSIS
 
