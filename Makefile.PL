@@ -12,6 +12,7 @@ requires 'MooseX::Types' => '0.04';
 
 # things the tests need
 test_requires 'Test::More' => '0.62';
+test_requires 'Test::Exception';
 
 resources 'IRC' => 'irc://irc.perl.org/#moose';
 resources 'license' => 'http://dev.perl.org/licenses/';
