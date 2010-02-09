@@ -1,3 +1,5 @@
+  - Warning when you try to import things from MooseX::Types::Common rather
+    than one of the specific String/Numeric modules in the distribution.
 0.001001 2010-01-04
   - POD updates
 0.001000

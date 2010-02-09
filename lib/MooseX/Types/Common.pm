@@ -2,8 +2,17 @@ package MooseX::Types::Common;
 
 use strict;
 use warnings;
+use Carp qw/cluck/;
 
 our $VERSION = '0.001001';
+
+sub import {
+    my $package = shift;
+    return unless @_;
+    cluck("Tried to import the symbols " . join(', ', @_)
+        . " from MooseX::Types::Common.\nDid you mean "
+        . "MooseX::Types::Common::String or MooseX::Type::Common::Numeric?");
+}
 
 1;
 
