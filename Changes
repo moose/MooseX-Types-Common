@@ -1,3 +1,8 @@
+0.001003
+  - The positive and negative number types mistakenly accepted zero. Reported
+    by Eric Brine. RT #53234.
+  - Added PositiveOrZero{Int,Num} and NegativeOrZero{Int,Num} types. (Dave
+    Rolsky)
 0.001002 2010-02-22 17:00EST
   - Add Test::Exception to the test_requires (RT#54357)
   - Warning when you try to import things from MooseX::Types::Common rather
