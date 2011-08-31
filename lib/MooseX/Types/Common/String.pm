@@ -3,7 +3,7 @@ package MooseX::Types::Common::String;
 use strict;
 use warnings;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.001003';
 
 use MooseX::Types -declare => [
   qw(SimpleStr NonEmptySimpleStr Password StrongPassword NonEmptyStr)
