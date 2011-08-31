@@ -13,48 +13,48 @@ use MooseX::Types::Moose qw/Num Int/;
 
 subtype PositiveNum,
   as Num,
-  where { $_ >= 0 },
+  where { $_ > 0 },
   message { "Must be a positive number" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ($_[1] >= 0) };
+                . qq{ ($_[1] > 0) };
         }
         : ()
     );
 
 subtype PositiveInt,
   as Int,
-  where { $_ >= 0 },
+  where { $_ > 0 },
   message { "Must be a positive integer" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ($_[1] >= 0) };
+                . qq{ ($_[1] > 0) };
         }
         : ()
     );
 
 subtype NegativeNum,
   as Num,
-  where { $_ <= 0 },
+  where { $_ < 0 },
   message { "Must be a negative number" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ($_[1] <= 0) };
+                . qq{ ($_[1] < 0) };
         }
         : ()
     );
 
 subtype NegativeInt,
   as Int,
-  where { $_ <= 0 },
+  where { $_ < 0 },
   message { "Must be a negative integer" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ($_[1] <= 0) };
+                . qq{ ($_[1] < 0) };
         }
         : ()
     );
