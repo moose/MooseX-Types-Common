@@ -6,7 +6,11 @@ use warnings;
 our $VERSION = '0.001001';
 
 use MooseX::Types -declare => [
-  qw(PositiveNum PositiveInt NegativeNum NegativeInt SingleDigit)
+  qw(PositiveNum PositiveOrZeroNum
+     PositiveInt PositiveOrZeroInt
+     NegativeNum NegativeOrZeroNum
+     NegativeInt NegativeOrZeroInt
+     SingleDigit)
 ];
 
 use MooseX::Types::Moose qw/Num Int/;
@@ -23,6 +27,18 @@ subtype PositiveNum,
         : ()
     );
 
+subtype PositiveOrZeroNum,
+  as Num,
+  where { $_ >= 0 },
+  message { "Must be a number greater than or equal to zero" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ($_[1] >= 0) };
+        }
+        : ()
+    );
+
 subtype PositiveInt,
   as Int,
   where { $_ > 0 },
@@ -31,6 +47,18 @@ subtype PositiveInt,
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
                 . qq{ ($_[1] > 0) };
+        }
+        : ()
+    );
+
+subtype PositiveOrZeroInt,
+  as Int,
+  where { $_ >= 0 },
+  message { "Must be an integer greater than or equal to zero" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ($_[1] >= 0) };
         }
         : ()
     );
@@ -47,6 +75,18 @@ subtype NegativeNum,
         : ()
     );
 
+subtype NegativeOrZeroNum,
+  as Num,
+  where { $_ <= 0 },
+  message { "Must be a number less than or equal to zero" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ($_[1] <= 0) };
+        }
+        : ()
+    );
+
 subtype NegativeInt,
   as Int,
   where { $_ < 0 },
@@ -55,6 +95,18 @@ subtype NegativeInt,
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
                 . qq{ ($_[1] < 0) };
+        }
+        : ()
+    );
+
+subtype NegativeOrZeroInt,
+  as Int,
+  where { $_ <= 0 },
+  message { "Must be an integer less than or equal to zero" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ($_[1] <= 0) };
         }
         : ()
     );
@@ -97,11 +149,19 @@ default.
 
 =item * PositiveNum
 
+=item * PositiveOrZeroNum
+
 =item * PositiveInt
+
+=item * PositiveOrZeroInt
 
 =item * NegativeNum
 
-=item * Int
+=item * NegativeOrZeroNum
+
+=item * NegativeInt
+
+=item * NegativeOrZeroInt
 
 =item * SingleDigit
 
