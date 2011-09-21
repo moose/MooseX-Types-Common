@@ -3,11 +3,17 @@ package MooseX::Types::Common::String;
 use strict;
 use warnings;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.001004';
 
-use MooseX::Types -declare => [
-  qw(SimpleStr NonEmptySimpleStr Password StrongPassword NonEmptyStr)
-];
+use MooseX::Types -declare => [ qw(
+  SimpleStr
+  NonEmptySimpleStr
+  Password
+  StrongPassword
+  NonEmptyStr
+  LowerCaseStr
+  UpperCaseStr
+)];
 
 use MooseX::Types::Moose qw/Str/;
 
@@ -72,6 +78,29 @@ subtype NonEmptyStr,
         : ()
     );
 
+subtype UpperCaseStr,
+  as NonEmptySimpleStr,
+  where { $_ =~ m/^[A-Z]*$/xms },
+  message{ 'must only contain upper case characters' },
+  ;
+
+coerce UpperCaseStr,
+  from Str,
+  via {
+    return uc $_;
+  };
+
+subtype LowerCaseStr,
+  as NonEmptySimpleStr,
+  where { $_ =~ m/^[a-z]*$/xms },
+  message{ 'must only contain lower case characters' },
+  ;
+
+coerce LowerCaseStr,
+  from Str,
+  via {
+    return lc $_;
+  };
 
 1;
 
@@ -108,6 +137,15 @@ Does what it says on the tin.
 =item * StrongPassword
 
 =item * NonEmptyStr
+
+=item * LowerCaseStr
+
+Non Empty String that contains only lower case characters. Coerce will attempt
+to coerce with C<lc>.
+
+=item * UpperCaseStr
+
+See LowerCaseStr, but upper case.
 
 =back
 

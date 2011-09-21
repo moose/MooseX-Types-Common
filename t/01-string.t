@@ -2,21 +2,29 @@
 
 use strict;
 use warnings;
-use Test::More tests => 14;
+use Test::More tests => 18;
 use Test::Exception;
 
 {
   package FooTest;
   use Moose;
-  use MooseX::Types::Common::String (
-    qw(SimpleStr NonEmptySimpleStr Password StrongPassword NonEmptyStr),
-  );
+  use MooseX::Types::Common::String (qw(
+    SimpleStr
+    NonEmptySimpleStr
+    Password
+    StrongPassword
+    NonEmptyStr
+    LowerCaseStr
+    UpperCaseStr
+  ),);
 
   has simplestr => ( is => 'rw', isa => SimpleStr);
   has nestr => ( is => 'rw', isa => NonEmptyStr);
   has nesimplestr => ( is => 'rw', isa => NonEmptySimpleStr);
   has password => ( is => 'rw', isa => Password);
   has strongpassword => ( is => 'rw', isa => StrongPassword);
+  has uppercasestr => ( is => 'rw', isa => UpperCaseStr );
+  has lowercasestr => ( is => 'rw', isa => LowerCaseStr );
 }
 
 my $ins = FooTest->new;
@@ -39,3 +47,9 @@ lives_ok { $ins->password('okay') } 'Password 2';
 
 dies_ok { $ins->strongpassword('notokay') } 'StrongPassword';
 lives_ok { $ins->strongpassword('83773r_ch01c3') } 'StrongPassword 2';
+
+dies_ok { $ins->uppercasestr('notok') } 'UpperCaseStr';
+lives_ok { $ins->uppercasestr('OK') } 'UpperCaseStr 2';
+
+dies_ok { $ins->lowercasestr('NOTOK') } 'LowerCaseStr';
+lives_ok { $ins->lowercasestr('ok') } 'LowerCaseStr 2';
