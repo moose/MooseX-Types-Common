@@ -1,3 +1,6 @@
+0.001004 2011-12-05 23:30EST
+  - use Test::Fatal instead of Test::Exception (Justin Hunter)
+  - Added {Lower,Upper}CaseSimpleStr and {Lower,Upper}CaseStr, RT #71133
 0.001003 2011-08-31 11:35EST
   - The positive and negative number types mistakenly accepted zero. Reported
     by Eric Brine. RT #53234.
