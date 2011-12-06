@@ -1,38 +1,49 @@
-MooseX::Types::Common - A library of commonly used type constraints.
+NAME
+    MooseX::Types::Common - A library of commonly used type constraints
 
-INSTALLATION
+SYNOPSIS
+        use MooseX::Types::Common::String qw/SimpleStr/;
+        has short_str => (is => 'rw', isa => SimpleStr);
 
-To install this module, run the following commands:
-
-  perl Makefile.PL
-  make
-  make test
-  make install
-
-SUPPORT AND DOCUMENTATION
-
-After installing, you can find documentation for this module with the
-perldoc command.
-
-    perldoc MooseX::Types:Common
-
-You can also look for information at:
-
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-Types-Common
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/MooseX-Types-Common
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/MooseX-Types-Common
-
-    Search CPAN
-        http://search.cpan.org/dist/MooseX-Types-Common
+        ...
+        #this will fail
+        $object->short_str("string\nwith\nbreaks");
 
 
-LICENCE
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+        use MooseX::Types::Common::Numeric qw/PositiveInt/;
+        has count => (is => 'rw', isa => PositiveInt);
+
+        ...
+        #this will fail
+        $object->count(-33);
+
+DESCRIPTION
+    A set of commonly-used type constraints that do not ship with Moose by
+    default.
+
+SEE ALSO
+    *   MooseX::Types::Common::String
+
+    *   MooseX::Types::Common::Numeric
+
+    *   MooseX::Types
+
+    *   Moose::Util::TypeConstraints
+
+AUTHORS
+    This distribution was extracted from the Reaction code base by Guillermo
+    Roditi (groditi).
+
+    The original authors of this library are:
+
+    *   Matt S. Trout
+
+    *   K. J. Cheetham
+
+    *   Guillermo Roditi
+
+LICENSE
+    This library is free software, you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
