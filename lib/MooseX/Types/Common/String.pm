@@ -6,7 +6,15 @@ use warnings;
 our $VERSION = '0.001003';
 
 use MooseX::Types -declare => [
-  qw(SimpleStr NonEmptySimpleStr Password StrongPassword NonEmptyStr)
+  qw(SimpleStr
+     NonEmptySimpleStr
+     LowerCaseSimpleStr
+     UpperCaseSimpleStr
+     Password
+     StrongPassword
+     NonEmptyStr
+     LowerCaseStr
+     UpperCaseStr)
 ];
 
 use MooseX::Types::Moose qw/Str/;
@@ -35,7 +43,6 @@ subtype NonEmptySimpleStr,
         : ()
     );
 
-# XXX duplicating constraint msges since moose only uses last message
 subtype Password,
   as NonEmptySimpleStr,
   where { length($_) > 3 },
@@ -72,6 +79,69 @@ subtype NonEmptyStr,
         : ()
     );
 
+subtype LowerCaseStr,
+  as NonEmptyStr,
+  where { /^[a-z]+$/xms },
+  message { "Must only contain lower case letters" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ( $_[1] =~ m/^[a-z]+\$/xms ) };
+        }
+        : ()
+    );
+
+coerce LowerCaseStr,
+  from NonEmptyStr,
+  via { lc };
+
+subtype UpperCaseStr,
+  as NonEmptyStr,
+  where { /^[A-Z]+$/xms },
+  message { "Must only contain upper case letters" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ( $_[1] =~ m/^[A-Z]+\$/xms ) };
+        }
+        : ()
+    );
+
+coerce UpperCaseStr,
+  from NonEmptyStr,
+  via { uc };
+
+subtype LowerCaseSimpleStr,
+  as NonEmptySimpleStr,
+  where { /^[a-z]+$/x },
+  message { "Must only contain lower case letters" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ( $_[1] =~ m/^[a-z]+\$/x ) };
+        }
+        : ()
+    );
+  
+coerce LowerCaseSimpleStr,
+  from NonEmptySimpleStr,
+  via { lc };
+
+subtype UpperCaseSimpleStr,
+  as NonEmptySimpleStr,
+  where { /^[A-Z]+$/x },
+  message { "Must only contain upper case letters" },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ ( $_[1] =~ m/^[A-Z]+\$/x ) };
+        }
+        : ()
+    );
+
+coerce UpperCaseSimpleStr,
+  from NonEmptySimpleStr,
+  via { uc };
 
 1;
 
@@ -101,13 +171,35 @@ A Str with no new-line characters.
 
 =item * NonEmptySimpleStr
 
-Does what it says on the tin.
+A Str with no new-line characters and length > 0
+
+=item * LowerCaseSimpleStr
+
+A Str with no new-line characters, length > 0 and all lowercase characters
+A coercion exists via C<lc> from NonEmptySimpleStr
+
+=item * UpperCaseSimpleStr
+
+A Str with no new-line characters, length > 0 and all uppercase characters
+A coercion exists via C<uc> from NonEmptySimpleStr
 
 =item * Password
 
 =item * StrongPassword
 
 =item * NonEmptyStr
+
+A Str with length > 0
+
+=item * LowerCaseStr
+
+A Str with length > 0 and all lowercase characters.
+A coercion exists via C<lc> from NonEmptyStr
+
+=item * UpperCaseStr
+
+A Str with length > 0 and all uppercase characters.
+A coercion exists via C<uc> from NonEmptyStr
 
 =back
 
