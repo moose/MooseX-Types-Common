@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use Test::More tests => 14;
-use Test::Exception;
+use Test::Fatal;
 
 {
   package FooTest;
@@ -21,21 +21,21 @@ use Test::Exception;
 
 my $ins = FooTest->new;
 
-lives_ok { $ins->simplestr('') } 'SimpleStr';
-lives_ok { $ins->simplestr('good string') } 'SimpleStr 2';
-dies_ok { $ins->simplestr("bad\nstring") } 'SimpleStr 3';
-dies_ok { $ins->simplestr(join('', ("long string" x 25))) } 'SimpleStr 4';
+is(exception { $ins->simplestr('') }, undef, 'SimpleStr');
+is(exception { $ins->simplestr('good string') }, undef, 'SimpleStr 2');
+isnt(exception { $ins->simplestr("bad\nstring") }, 'SimpleStr 3');
+isnt(exception { $ins->simplestr(join('', ("long string" x 25))) }, undef, 'SimpleStr 4');
 
-dies_ok { $ins->nestr('') } 'NonEmptyStr';
-lives_ok { $ins->nestr('good string') } 'NonEmptyStr 2';
-lives_ok { $ins->nestr("bad\nstring") } 'NonEmptyStr 3';
-lives_ok { $ins->nestr(join('', ("long string" x 25))) } 'NonEmptyStr 4';
+isnt(exception { $ins->nestr('') }, undef, 'NonEmptyStr');
+is(exception { $ins->nestr('good string') }, undef, 'NonEmptyStr 2');
+is(exception { $ins->nestr("bad\nstring") }, undef, 'NonEmptyStr 3');
+is(exception { $ins->nestr(join('', ("long string" x 25))) }, undef, 'NonEmptyStr 4');
 
-lives_ok { $ins->nesimplestr('good str') } 'NonEmptySimplrStr ';
-dies_ok { $ins->nesimplestr('') } 'NonEmptyStr 2';
+is(exception { $ins->nesimplestr('good str') }, undef, 'NonEmptySimplrStr');
+isnt(exception { $ins->nesimplestr('') }, undef, 'NonEmptyStr 2');
 
-dies_ok { $ins->password('no') } 'Password';
-lives_ok { $ins->password('okay') } 'Password 2';
+isnt(exception { $ins->password('no') }, undef, 'Password');
+is(exception { $ins->password('okay') }, undef, 'Password 2');
 
-dies_ok { $ins->strongpassword('notokay') } 'StrongPassword';
-lives_ok { $ins->strongpassword('83773r_ch01c3') } 'StrongPassword 2';
+isnt(exception { $ins->strongpassword('notokay') }, undef, 'StrongPassword');
+is(exception { $ins->strongpassword('83773r_ch01c3') }, undef, 'StrongPassword 2');
