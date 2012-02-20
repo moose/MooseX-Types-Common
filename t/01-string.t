@@ -2,8 +2,9 @@
 
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 25;
 use Test::Fatal;
+use Test::Exception;
 
 {
   package FooTest;
@@ -17,7 +18,9 @@ use Test::Fatal;
        StrongPassword
        NonEmptyStr
        LowerCaseStr
-       UpperCaseStr),
+       UpperCaseStr
+       NumericCode
+	),
   );
 
   has simplestr => ( is => 'rw', isa => SimpleStr );
@@ -29,6 +32,7 @@ use Test::Fatal;
   has strongpassword => ( is => 'rw', isa => StrongPassword );
   has lowercasestr => ( is => 'rw', isa => LowerCaseStr );
   has uppercasestr => ( is => 'rw', isa => UpperCaseStr );
+  has numericcode => ( is => 'rw', isa => NumericCode );
 }
 
 my $ins = FooTest->new;
@@ -63,3 +67,8 @@ is(exception { $ins->lowercasestr('ok') }, undef, 'LowerCaseStr 2');
 
 isnt(exception { $ins->uppercasestr('notok') }, undef, 'UpperCaseStr');
 is(exception { $ins->uppercasestr('OK') }, undef, 'UpperCaseStr 2');
+
+
+is(   exception { $ins->numericcode('032') }, undef,  'NumericCode lives');
+isnt( exception { $ins->numericcode('abc') }, undef,  'NumericCode dies' );
+isnt( exception { $ins->numericcode('x18') }, undef,  'mixed NumericCode dies');
