@@ -3,7 +3,7 @@ package MooseX::Types::Common::Numeric;
 use strict;
 use warnings;
 
-our $VERSION = '0.001005';
+our $VERSION = '0.001006';
 
 use MooseX::Types -declare => [
   qw(PositiveNum PositiveOrZeroNum

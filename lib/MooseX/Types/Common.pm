@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp qw/cluck/;
 
-our $VERSION = '0.001005';
+our $VERSION = '0.001006';
 
 sub import {
     my $package = shift;
