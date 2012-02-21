@@ -214,14 +214,14 @@ A coercion exists via C<lc> from NonEmptyStr
 A Str with length > 0 and all uppercase characters.
 A coercion exists via C<uc> from NonEmptyStr
 
-=back
-
 =item * NumericCode
 
 A Str with no new-line characters that consists of only Numeric characters.
 Examples include, Social Security Numbers, PINs, Postal Codes, HTTP Status
 Codes, etc. Supports attempting to coerce from a string that has punctuation
 in it ( e.g credit card number 4111-1111-1111-1111 ).
+
+=back
 
 =head1 SEE ALSO
 
