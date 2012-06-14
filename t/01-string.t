@@ -62,10 +62,10 @@ isnt(exception { $ins->ucsimplestr('notok') }, undef, 'UpperCaseSimpleStr');
 is(exception { $ins->ucsimplestr('OK') }, undef, 'UpperCaseSimpleStr 2');
 
 isnt(exception { $ins->lowercasestr('NOTOK') }, undef, 'LowerCaseStr');
-is(exception { $ins->lowercasestr('ok') }, undef, 'LowerCaseStr 2');
+is(exception { $ins->lowercasestr("ok\nok") }, undef, 'LowerCaseStr 2');
 
 isnt(exception { $ins->uppercasestr('notok') }, undef, 'UpperCaseStr');
-is(exception { $ins->uppercasestr('OK') }, undef, 'UpperCaseStr 2');
+is(exception { $ins->uppercasestr("OK\nOK") }, undef, 'UpperCaseStr 2');
 
 
 is(   exception { $ins->numericcode('032') }, undef,  'NumericCode lives');
