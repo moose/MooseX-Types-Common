@@ -94,12 +94,12 @@ subtype NonEmptyStr,
 
 subtype LowerCaseStr,
   as NonEmptyStr,
-  where { /^[a-z]+$/xms },
-  message { "Must only contain lower case letters" },
+  where { !/[A-Z]/ms },
+  message { "Must not contain upper case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] =~ m/^[a-z]+\$/xms ) };
+                . qq{ ( $_[1] !~ /[A-Z]/ms ) };
         }
         : ()
     );
@@ -110,12 +110,12 @@ coerce LowerCaseStr,
 
 subtype UpperCaseStr,
   as NonEmptyStr,
-  where { /^[A-Z]+$/xms },
-  message { "Must only contain upper case letters" },
+  where { !/[a-z]/ms },
+  message { "Must not contain lower case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] =~ m/^[A-Z]+\$/xms ) };
+                . qq{ ( $_[1] !~ m/[a-z]/ms ) };
         }
         : ()
     );
@@ -126,12 +126,12 @@ coerce UpperCaseStr,
 
 subtype LowerCaseSimpleStr,
   as NonEmptySimpleStr,
-  where { /^[a-z]+$/x },
-  message { "Must only contain lower case letters" },
+  where { !/[A-Z]/ },
+  message { "Must not contain upper case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] =~ m/^[a-z]+\$/x ) };
+                . qq{ ( $_[1] !~ m/[A-Z]/ ) };
         }
         : ()
     );
@@ -142,12 +142,12 @@ coerce LowerCaseSimpleStr,
 
 subtype UpperCaseSimpleStr,
   as NonEmptySimpleStr,
-  where { /^[A-Z]+$/x },
-  message { "Must only contain upper case letters" },
+  where { !/[a-z]/ },
+  message { "Must not contain lower case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] =~ m/^[A-Z]+\$/x ) };
+                . qq{ ( $_[1] !~ m/[a-z]/ ) };
         }
         : ()
     );
@@ -188,12 +188,12 @@ A Str with no new-line characters and length > 0
 
 =item * LowerCaseSimpleStr
 
-A Str with no new-line characters, length > 0 and all lowercase characters
+A Str with no new-line characters, length > 0 and no uppercase characters
 A coercion exists via C<lc> from NonEmptySimpleStr
 
 =item * UpperCaseSimpleStr
 
-A Str with no new-line characters, length > 0 and all uppercase characters
+A Str with no new-line characters, length > 0 and no lowercase characters
 A coercion exists via C<uc> from NonEmptySimpleStr
 
 =item * Password
@@ -206,12 +206,12 @@ A Str with length > 0
 
 =item * LowerCaseStr
 
-A Str with length > 0 and all lowercase characters.
+A Str with length > 0 and no uppercase characters.
 A coercion exists via C<lc> from NonEmptyStr
 
 =item * UpperCaseStr
 
-A Str with length > 0 and all uppercase characters.
+A Str with length > 0 and no lowercase characters.
 A coercion exists via C<uc> from NonEmptyStr
 
 =item * NumericCode

@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 25;
+use Test::More tests => 33;
 use Test::Fatal;
 
 {
@@ -36,6 +36,8 @@ use Test::Fatal;
 
 my $ins = FooTest->new;
 
+# TODO: need to check both the inlined and non-inlined versions!
+
 is(exception { $ins->simplestr('') }, undef, 'SimpleStr');
 is(exception { $ins->simplestr('good string') }, undef, 'SimpleStr 2');
 isnt(exception { $ins->simplestr("bad\nstring") }, 'SimpleStr 3');
@@ -57,16 +59,23 @@ is(exception { $ins->strongpassword('83773r_ch01c3') }, undef, 'StrongPassword 2
 
 isnt(exception { $ins->lcsimplestr('NOTOK') }, undef, 'LowerCaseSimpleStr');
 is(exception { $ins->lcsimplestr('ok') }, undef, 'LowerCaseSimpleStr 2');
+isnt(exception { $ins->lcsimplestr('NOTOK_123`"') }, undef, 'LowerCaseSimpleStr 3');
+is(exception { $ins->lcsimplestr('ok_123`"') }, undef, 'LowerCaseSimpleStr 4');
 
 isnt(exception { $ins->ucsimplestr('notok') }, undef, 'UpperCaseSimpleStr');
 is(exception { $ins->ucsimplestr('OK') }, undef, 'UpperCaseSimpleStr 2');
+isnt(exception { $ins->ucsimplestr('notok_123`"') }, undef, 'UpperCaseSimpleStr 3');
+is(exception { $ins->ucsimplestr('OK_123`"') }, undef, 'UpperCaseSimpleStr 4');
 
 isnt(exception { $ins->lowercasestr('NOTOK') }, undef, 'LowerCaseStr');
-is(exception { $ins->lowercasestr('ok') }, undef, 'LowerCaseStr 2');
+is(exception { $ins->lowercasestr("ok\nok") }, undef, 'LowerCaseStr 2');
+isnt(exception { $ins->lowercasestr('NOTOK_123`"') }, undef, 'LowerCaseStr 3');
+is(exception { $ins->lowercasestr("ok\n_123`'") }, undef, 'LowerCaseStr 4');
 
 isnt(exception { $ins->uppercasestr('notok') }, undef, 'UpperCaseStr');
-is(exception { $ins->uppercasestr('OK') }, undef, 'UpperCaseStr 2');
-
+is(exception { $ins->uppercasestr("OK\nOK") }, undef, 'UpperCaseStr 2');
+isnt(exception { $ins->uppercasestr('notok_123`"') }, undef, 'UpperCaseStr 3');
+is(exception { $ins->uppercasestr("OK\n_123`'") }, undef, 'UpperCaseStr 4');
 
 is(   exception { $ins->numericcode('032') }, undef,  'NumericCode lives');
 isnt( exception { $ins->numericcode('abc') }, undef,  'NumericCode dies' );
