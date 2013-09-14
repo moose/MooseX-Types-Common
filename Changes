@@ -5,6 +5,7 @@ Revision history for {{$dist->name}}
   - SingleDigit now supports zero and negative numbers (RT#86738)
   - UpperCase and LowerCase string types now properly understand unicode
     characters (RT#84547)
+  - repository moved to the github moose organization
 
 0.001008   2012-06-14 11:29:50 PDT
   - Upper* and Lower* string types now accept non-alphabetic characters (Karen
