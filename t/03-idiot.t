@@ -1,28 +1,24 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More;
+use Test::More tests => 2;
+use Test::Warnings ':no_end_test', ':all';
+use Test::Deep;
 
 # Test for a warning when you make the stupid mistake I make all the time
 # of saying use MooseX::Types::Common qw/NonEmptySimpleStr/;
 
-BEGIN {
-    eval { require Capture::Tiny }
-        or plan skip_all => 'Capture::Tiny needed for these tests';
-}
+require MooseX::Types::Common;
 
-plan tests => 4;
+cmp_deeply(
+    [ warnings { MooseX::Types::Common->import } ],
+    [],
+    'No warning if nothing imported',
+);
 
-use_ok 'MooseX::Types::Common';
-
-my ($stdout, $stderr) = Capture::Tiny::capture(sub {
-    MooseX::Types::Common->import;
-});
-is $stderr, '', 'No warning if nothing imported';
-
-($stdout, $stderr) = Capture::Tiny::capture(sub {
-    MooseX::Types::Common->import('NonEmptySimpleStr');
-});
-like $stderr, qr/Did you mean/, 'Got warning';
-like $stderr, qr/NonEmptySimpleStr/, 'Warning mentions bad type';
+cmp_deeply(
+    [ warnings { MooseX::Types::Common->import('NonEmptySimpleStr') } ],
+    [ re(qr/Did you mean.*NonEmptySimpleStr/s) ],
+    'Warning mentions bad type',
+);
 
