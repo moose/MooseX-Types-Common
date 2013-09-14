@@ -1,7 +1,5 @@
-#! /usr/bin/perl -w
-
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 use Test::More tests => 3;
 
 use_ok('MooseX::Types::Common');
