@@ -1,10 +1,9 @@
 package MooseX::Types::Common;
+# ABSTRACT: A library of commonly used type constraints
 
 use strict;
 use warnings;
 use Carp qw/cluck/;
-
-our $VERSION = '0.001008';
 
 sub import {
     my $package = shift;
@@ -15,10 +14,9 @@ sub import {
 }
 
 1;
+__END__
 
-=head1 NAME
-
-MooseX::Types::Common - A library of commonly used type constraints
+=pod
 
 =head1 SYNOPSIS
 
@@ -28,7 +26,6 @@ MooseX::Types::Common - A library of commonly used type constraints
     ...
     #this will fail
     $object->short_str("string\nwith\nbreaks");
-
 
 
     use MooseX::Types::Common::Numeric qw/PositiveInt/;
@@ -56,26 +53,9 @@ A set of commonly-used type constraints that do not ship with Moose by default.
 
 =back
 
-=head1 AUTHORS
+=head1 ORIGIN
 
 This distribution was extracted from the L<Reaction> code base by Guillermo
 Roditi (groditi).
-
-The original authors of this library are:
-
-=over 4
-
-=item * Matt S. Trout
-
-=item * K. J. Cheetham
-
-=item * Guillermo Roditi
-
-=back
-
-=head1 LICENSE
-
-This library is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
 
 =cut

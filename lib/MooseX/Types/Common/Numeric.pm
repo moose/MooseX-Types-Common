@@ -1,9 +1,8 @@
 package MooseX::Types::Common::Numeric;
+# ABSTRACT: Commonly used numeric types
 
 use strict;
 use warnings;
-
-our $VERSION = '0.001008';
 
 use MooseX::Types -declare => [
   qw(PositiveNum PositiveOrZeroNum
@@ -125,11 +124,9 @@ subtype SingleDigit,
 
 1;
 
-__END__;
+__END__
 
-=head1 NAME
-
-MooseX::Types::Common::Numeric - Commonly used numeric types
+=pod
 
 =head1 SYNOPSIS
 
@@ -174,9 +171,5 @@ default.
 =item * L<MooseX::Types::Common::String>
 
 =back
-
-=head1 AUTHORS
-
-Please see:: L<MooseX::Types::Common>
 
 =cut

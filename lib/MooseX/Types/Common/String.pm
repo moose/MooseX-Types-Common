@@ -1,9 +1,8 @@
 package MooseX::Types::Common::String;
+# ABSTRACT:  Commonly used string types
 
 use strict;
 use warnings;
-
-our $VERSION = '0.001008';
 
 use MooseX::Types -declare => [
   qw(SimpleStr
@@ -157,10 +156,9 @@ coerce UpperCaseSimpleStr,
   via { uc };
 
 1;
+__END__
 
-=head1 NAME
-
-MooseX::Types::Common::String - Commonly used string types
+=pod
 
 =head1 SYNOPSIS
 
@@ -230,9 +228,5 @@ in it ( e.g credit card number 4111-1111-1111-1111 ).
 =item * L<MooseX::Types::Common::Numeric>
 
 =back
-
-=head1 AUTHORS
-
-Please see:: L<MooseX::Types::Common>
 
 =cut
