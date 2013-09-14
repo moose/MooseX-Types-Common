@@ -93,12 +93,12 @@ subtype NonEmptyStr,
 
 subtype LowerCaseStr,
   as NonEmptyStr,
-  where { !/[A-Z]/ms },
+  where { !/\p{Upper}/ms },
   message { "Must not contain upper case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] !~ /[A-Z]/ms ) };
+                . qq{ ( $_[1] !~ /\\p{Upper}/ms ) };
         }
         : ()
     );
@@ -109,12 +109,12 @@ coerce LowerCaseStr,
 
 subtype UpperCaseStr,
   as NonEmptyStr,
-  where { !/[a-z]/ms },
+  where { !/\p{Lower}/ms },
   message { "Must not contain lower case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] !~ m/[a-z]/ms ) };
+                . qq{ ( $_[1] !~ /\\p{Lower}/ms ) };
         }
         : ()
     );
@@ -125,12 +125,12 @@ coerce UpperCaseStr,
 
 subtype LowerCaseSimpleStr,
   as NonEmptySimpleStr,
-  where { !/[A-Z]/ },
+  where { !/\p{Upper}/ },
   message { "Must not contain upper case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] !~ m/[A-Z]/ ) };
+                . qq{ ( $_[1] !~ /\\p{Upper}/ ) };
         }
         : ()
     );
@@ -141,12 +141,12 @@ coerce LowerCaseSimpleStr,
 
 subtype UpperCaseSimpleStr,
   as NonEmptySimpleStr,
-  where { !/[a-z]/ },
+  where { !/\p{Lower}/ },
   message { "Must not contain lower case letters" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ( $_[1] !~ m/[a-z]/ ) };
+                . qq{ ( $_[1] !~ /\\p{Lower}/ ) };
         }
         : ()
     );
