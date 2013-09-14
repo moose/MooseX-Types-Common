@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.001009  2013-09-14 22:11:25Z (Karen Etheridge)
   - converted to Dist::Zilla
   - SingleDigit now supports zero and negative numbers (RT#86738)
   - UpperCase and LowerCase string types now properly understand unicode
