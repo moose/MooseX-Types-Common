@@ -3,65 +3,49 @@ use warnings FATAL => 'all';
 use Test::More tests => 34;
 use Test::Fatal;
 
-{
-  package FooTest;
-  use Moose;
-  use MooseX::Types::Common::Numeric (
-    qw(PositiveNum PositiveOrZeroNum
-       PositiveInt PositiveOrZeroInt
-       NegativeNum NegativeOrZeroNum
-       NegativeInt NegativeOrZeroInt
-       SingleDigit)
-  );
+use MooseX::Types::Common::Numeric qw(
+    PositiveNum PositiveOrZeroNum
+    PositiveInt PositiveOrZeroInt
+    NegativeNum NegativeOrZeroNum
+    NegativeInt NegativeOrZeroInt
+    SingleDigit
+);
 
-  has digit => ( is => 'rw', isa => SingleDigit);
-  has posnum => ( is => 'rw', isa => PositiveNum);
-  has posint => ( is => 'rw', isa => PositiveInt);
-  has negnum => ( is => 'rw', isa => NegativeNum);
-  has negint => ( is => 'rw', isa => NegativeInt);
-  has posorzeronum => ( is => 'rw', isa => PositiveOrZeroNum);
-  has posorzeroint => ( is => 'rw', isa => PositiveOrZeroInt);
-  has negorzeronum => ( is => 'rw', isa => NegativeOrZeroNum);
-  has negorzeroint => ( is => 'rw', isa => NegativeOrZeroInt);
-}
+ok(!is_SingleDigit(100), 'SingleDigit');
+ok(is_SingleDigit(1), 'SingleDigit 2');
 
-my $ins = FooTest->new;
+ok(!is_PositiveInt(-100), 'PositiveInt (-100)');
+ok(!is_PositiveInt(0), 'PositiveInt (0)');
+ok(!is_PositiveInt(100.885), 'PositiveInt (100.885)');
+ok(is_PositiveInt(100), 'PositiveInt (100)');
+ok(!is_PositiveNum(0), 'PositiveNum (0)');
+ok(is_PositiveNum(100.885), 'PositiveNum (100.885)');
+ok(!is_PositiveNum(-100.885), 'PositiveNum (-100.885)');
+ok(is_PositiveNum(0.0000000001), 'PositiveNum (0.0000000001)');
 
-isnt(exception { $ins->digit(100); }, undef, 'SingleDigit');
-is(exception { $ins->digit(1); }, undef, 'SingleDigit 2');
+ok(!is_PositiveOrZeroInt(-100), 'PositiveOrZeroInt (-100)');
+ok(is_PositiveOrZeroInt(0), 'PositiveOrZeroInt (0)');
+ok(!is_PositiveOrZeroInt(100.885), 'PositiveOrZeroInt (100.885)');
+ok(is_PositiveOrZeroInt(100), 'PositiveOrZeroInt (100)');
+ok(is_PositiveOrZeroNum(0), 'PositiveOrZeroNum (0)');
+ok(is_PositiveOrZeroNum(100.885), 'PositiveOrZeroNum (100.885)');
+ok(!is_PositiveOrZeroNum(-100.885), 'PositiveOrZeroNum (-100.885)');
+ok(is_PositiveOrZeroNum(0.0000000001), 'PositiveOrZeroNum (0.0000000001)');
 
-isnt(exception { $ins->posint(-100); }, undef, 'PositiveInt (-100)');
-isnt(exception { $ins->posint(0); }, undef, 'PositiveInt (0)');
-isnt(exception { $ins->posint(100.885); }, undef, 'PositiveInt (100.885)');
-is(exception { $ins->posint(100); }, undef, 'PositiveInt (100)');
-isnt(exception { $ins->posnum(0); }, undef, 'PositiveNum (0)');
-is(exception { $ins->posnum(100.885); }, undef, 'PositiveNum (100.885)');
-isnt(exception { $ins->posnum(-100.885); }, undef, 'PositiveNum (-100.885)');
-is(exception { $ins->posnum(0.0000000001); }, undef, 'PositiveNum (0.0000000001)');
+ok(!is_NegativeInt(100), 'NegativeInt (100)');
+ok(!is_NegativeInt(-100.885), 'NegativeInt (-100.885)');
+ok(is_NegativeInt(-100), 'NegativeInt (-100)');
+ok(!is_NegativeInt(0), 'NegativeInt (0)');
+ok(is_NegativeNum(-100.885), 'NegativeNum (-100.885)');
+ok(!is_NegativeNum(100.885), 'NegativeNum (100.885)');
+ok(!is_NegativeNum(0), 'NegativeNum (0)');
+ok(is_NegativeNum(-0.0000000001), 'NegativeNum (-0.0000000001)');
 
-isnt(exception { $ins->posorzeroint(-100); }, undef, 'PositiveOrZeroInt (-100)');
-is(exception { $ins->posorzeroint(0); }, undef, 'PositiveOrZeroInt (0)');
-isnt(exception { $ins->posorzeroint(100.885); }, undef, 'PositiveOrZeroInt (100.885)');
-is(exception { $ins->posorzeroint(100); }, undef, 'PositiveOrZeroInt (100)');
-is(exception { $ins->posorzeronum(0); }, undef, 'PositiveOrZeroNum (0)');
-is(exception { $ins->posorzeronum(100.885); }, undef, 'PositiveOrZeroNum (100.885)');
-isnt(exception { $ins->posorzeronum(-100.885); }, undef, 'PositiveOrZeroNum (-100.885)');
-is(exception { $ins->posorzeronum(0.0000000001); }, undef, 'PositiveOrZeroNum (0.0000000001)');
-
-isnt(exception { $ins->negint(100); }, undef, 'NegativeInt (100)');
-isnt(exception { $ins->negint(-100.885); }, undef, 'NegativeInt (-100.885)');
-is(exception { $ins->negint(-100); }, undef, 'NegativeInt (-100)');
-isnt(exception { $ins->negint(0); }, undef, 'NegativeInt (0)');
-is(exception { $ins->negnum(-100.885); }, undef, 'NegativeNum (-100.885)');
-isnt(exception { $ins->negnum(100.885); }, undef, 'NegativeNum (100.885)');
-isnt(exception { $ins->negnum(0); }, undef, 'NegativeNum (0)');
-is(exception { $ins->negnum(-0.0000000001); }, undef, 'NegativeNum (-0.0000000001)');
-
-isnt(exception { $ins->negorzeroint(100); }, undef, 'NegativeOrZeroInt (100)');
-isnt(exception { $ins->negorzeroint(-100.885); }, undef, 'NegativeOrZeroInt (-100.885)');
-is(exception { $ins->negorzeroint(-100); }, undef, 'NegativeOrZeroInt (-100)');
-is(exception { $ins->negorzeroint(0); }, undef, 'NegativeOrZeroInt (0)');
-is(exception { $ins->negorzeronum(-100.885); }, undef, 'NegativeOrZeroNum (-100.885)');
-isnt(exception { $ins->negorzeronum(100.885); }, undef, 'NegativeOrZeroNum (100.885)');
-is(exception { $ins->negorzeronum(0); }, undef, 'NegativeOrZeroNum (0)');
-is(exception { $ins->negorzeronum(-0.0000000001); }, undef, 'NegativeOrZeroNum (-0.0000000001)');
+ok(!is_NegativeOrZeroInt(100), 'NegativeOrZeroInt (100)');
+ok(!is_NegativeOrZeroInt(-100.885), 'NegativeOrZeroInt (-100.885)');
+ok(is_NegativeOrZeroInt(-100), 'NegativeOrZeroInt (-100)');
+ok(is_NegativeOrZeroInt(0), 'NegativeOrZeroInt (0)');
+ok(is_NegativeOrZeroNum(-100.885), 'NegativeOrZeroNum (-100.885)');
+ok(!is_NegativeOrZeroNum(100.885), 'NegativeOrZeroNum (100.885)');
+ok(is_NegativeOrZeroNum(0), 'NegativeOrZeroNum (0)');
+ok(is_NegativeOrZeroNum(-0.0000000001), 'NegativeOrZeroNum (-0.0000000001)');
