@@ -1,7 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 34;
-use Test::Fatal;
+
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use MooseX::Types::Common::Numeric qw(
     PositiveNum PositiveOrZeroNum
@@ -49,3 +50,5 @@ ok(is_NegativeOrZeroNum(-100.885), 'NegativeOrZeroNum (-100.885)');
 ok(!is_NegativeOrZeroNum(100.885), 'NegativeOrZeroNum (100.885)');
 ok(is_NegativeOrZeroNum(0), 'NegativeOrZeroNum (0)');
 ok(is_NegativeOrZeroNum(-0.0000000001), 'NegativeOrZeroNum (-0.0000000001)');
+
+done_testing;

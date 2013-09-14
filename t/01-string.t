@@ -1,6 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 33;
+
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use MooseX::Types::Common::String qw(
     SimpleStr
@@ -60,3 +62,4 @@ ok(is_NumericCode('032'),  'NumericCode lives');
 ok(!is_NumericCode('abc'),  'NumericCode dies' );
 ok(!is_NumericCode('x18'),  'mixed NumericCode dies');
 
+done_testing;

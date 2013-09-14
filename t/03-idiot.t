@@ -1,7 +1,7 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 2;
+use Test::More;
 use Test::Warnings ':no_end_test', ':all';
 use Test::Deep;
 
@@ -22,3 +22,5 @@ cmp_deeply(
     'Warning mentions bad type',
 );
 
+had_no_warnings if $ENV{AUTHOR_TESTING};
+done_testing;
