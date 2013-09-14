@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - converted to Dist::Zilla
+  - SingleDigit now supports zero and negative numbers (RT#86738)
 
 0.001008   2012-06-14 11:29:50 PDT
   - Upper* and Lower* string types now accept non-alphabetic characters (Karen

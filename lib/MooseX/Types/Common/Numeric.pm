@@ -111,13 +111,13 @@ subtype NegativeOrZeroInt,
     );
 
 subtype SingleDigit,
-  as PositiveInt,
-  where { $_ <= 9 },
+  as Int,
+  where { $_ >= -9 and $_ <= 9 },
   message { "Must be a single digit" },
     ( $Moose::VERSION >= 2.0200
         ? inline_as {
             $_[0]->parent()->_inline_check( $_[1] ) . ' && '
-                . qq{ ($_[1] <= 9) };
+                . qq{ ($_[1] >= -9 and $_[1] <= 9) };
         }
         : ()
     );

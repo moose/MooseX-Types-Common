@@ -12,8 +12,15 @@ use MooseX::Types::Common::Numeric qw(
     SingleDigit
 );
 
-ok(!is_SingleDigit(100), 'SingleDigit');
-ok(is_SingleDigit(1), 'SingleDigit 2');
+ok(!is_SingleDigit(100), 'SingleDigit 100');
+ok(!is_SingleDigit(10), 'SingleDigit 10');
+ok(is_SingleDigit(9), 'SingleDigit 9');
+ok(is_SingleDigit(1), 'SingleDigit 1');
+ok(is_SingleDigit(0), 'SingleDigit 0');
+ok(is_SingleDigit(-1), 'SingleDigit -1');
+ok(is_SingleDigit(-9), 'SingleDigit -9');
+ok(!is_SingleDigit(-10), 'SingleDigit -10');
+
 
 ok(!is_PositiveInt(-100), 'PositiveInt (-100)');
 ok(!is_PositiveInt(0), 'PositiveInt (0)');
