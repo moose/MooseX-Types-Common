@@ -144,23 +144,23 @@ default.
 
 =over
 
-=item * PositiveNum
+=item * C<PositiveNum>
 
-=item * PositiveOrZeroNum
+=item * C<PositiveOrZeroNum>
 
-=item * PositiveInt
+=item * C<PositiveInt>
 
-=item * PositiveOrZeroInt
+=item * C<PositiveOrZeroInt>
 
-=item * NegativeNum
+=item * C<NegativeNum>
 
-=item * NegativeOrZeroNum
+=item * C<NegativeOrZeroNum>
 
-=item * NegativeInt
+=item * C<NegativeInt>
 
-=item * NegativeOrZeroInt
+=item * C<NegativeOrZeroInt>
 
-=item * SingleDigit
+=item * C<SingleDigit>
 
 =back
 

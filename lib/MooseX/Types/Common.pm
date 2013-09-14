@@ -6,7 +6,7 @@ use warnings;
 use Carp qw/cluck/;
 
 sub import {
-    my $package = shift;
+    my $self = shift;
     return unless @_;
     cluck("Tried to import the symbols " . join(', ', @_)
         . " from MooseX::Types::Common.\nDid you mean "

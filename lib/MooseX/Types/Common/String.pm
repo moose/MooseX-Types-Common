@@ -134,7 +134,7 @@ subtype LowerCaseSimpleStr,
         }
         : ()
     );
-  
+
 coerce LowerCaseSimpleStr,
   from NonEmptySimpleStr,
   via { lc };
@@ -176,46 +176,46 @@ default.
 
 =over
 
-=item * SimpleStr
+=item * C<SimpleStr>
 
-A Str with no new-line characters.
+A C<Str> with no new-line characters.
 
-=item * NonEmptySimpleStr
+=item * C<NonEmptySimpleStr>
 
-A Str with no new-line characters and length > 0
+A C<Str> with no new-line characters and length > 0
 
-=item * LowerCaseSimpleStr
+=item * C<LowerCaseSimpleStr>
 
-A Str with no new-line characters, length > 0 and no uppercase characters
-A coercion exists via C<lc> from NonEmptySimpleStr
+A C<Str> with no new-line characters, length > 0 and no uppercase characters
+A coercion exists via C<lc> from C<NonEmptySimpleStr>
 
-=item * UpperCaseSimpleStr
+=item * C<UpperCaseSimpleStr>
 
-A Str with no new-line characters, length > 0 and no lowercase characters
-A coercion exists via C<uc> from NonEmptySimpleStr
+A C<Str> with no new-line characters, length > 0 and no lowercase characters
+A coercion exists via C<uc> from C<NonEmptySimpleStr>
 
-=item * Password
+=item * C<Password>
 
-=item * StrongPassword
+=item * C<StrongPassword>
 
-=item * NonEmptyStr
+=item * C<NonEmptyStr>
 
-A Str with length > 0
+A C<Str> with length > 0
 
-=item * LowerCaseStr
+=item * C<LowerCaseStr>
 
-A Str with length > 0 and no uppercase characters.
-A coercion exists via C<lc> from NonEmptyStr
+A C<Str> with length > 0 and no uppercase characters.
+A coercion exists via C<lc> from C<NonEmptyStr>
 
-=item * UpperCaseStr
+=item * C<UpperCaseStr>
 
-A Str with length > 0 and no lowercase characters.
-A coercion exists via C<uc> from NonEmptyStr
+A C<Str> with length > 0 and no lowercase characters.
+A coercion exists via C<uc> from C<NonEmptyStr>
 
-=item * NumericCode
+=item * C<NumericCode>
 
-A Str with no new-line characters that consists of only Numeric characters.
-Examples include, Social Security Numbers, PINs, Postal Codes, HTTP Status
+A C<Str> with no new-line characters that consists of only Numeric characters.
+Examples include, Social Security Numbers, Personal Identification Numbers, Postal Codes, HTTP Status
 Codes, etc. Supports attempting to coerce from a string that has punctuation
 in it ( e.g credit card number 4111-1111-1111-1111 ).
 
