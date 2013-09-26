@@ -2,7 +2,7 @@ use strict;
 use warnings FATAL => 'all';
 
 use Test::More;
-use Test::Warnings ':no_end_test', ':all';
+use Test::Warnings 0.005 ':no_end_test', ':all';
 use Test::Deep;
 
 # Test for a warning when you make the stupid mistake I make all the time
