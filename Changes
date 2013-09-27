@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - add incomplete prereq on Test::Warnings (haarg)
+  - re-release with fixed compile test
 
 0.001009  2013-09-14 22:11:25Z (Karen Etheridge)
   - converted to Dist::Zilla
