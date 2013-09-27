@@ -48,7 +48,7 @@ subtype NumericCode,
   where { $_ =~ m/^[0-9]+$/ },
   message {
     'Must be a non-empty single line of no more than 255 chars that consists '
-	. 'of numeric characters only'
+        . 'of numeric characters only'
   };
 
 coerce NumericCode,
