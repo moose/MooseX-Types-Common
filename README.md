@@ -4,7 +4,7 @@ MooseX::Types::Common - A library of commonly used type constraints
 
 # VERSION
 
-version 0.001009
+version 0.001010
 
 # SYNOPSIS
 
@@ -56,6 +56,7 @@ the same terms as the Perl 5 programming language system itself.
 # CONTRIBUTORS
 
 - Dave Rolsky <autarch@urth.org>
+- Graham Knop <haarg@haarg.org>
 - Justin Hunter <justin.d.hunter@gmail.com>
 - Karen Etheridge <ether@cpan.org>
 - Toby Inkster <tobyink@cpan.org>
