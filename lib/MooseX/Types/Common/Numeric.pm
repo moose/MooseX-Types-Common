@@ -13,6 +13,7 @@ use MooseX::Types -declare => [
 ];
 
 use MooseX::Types::Moose qw/Num Int/;
+use namespace::autoclean;
 
 subtype PositiveNum,
   as Num,
