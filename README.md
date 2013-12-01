@@ -30,14 +30,14 @@ A set of commonly-used type constraints that do not ship with Moose by default.
 
 # SEE ALSO
 
-- [MooseX::Types::Common::String](http://search.cpan.org/perldoc?MooseX::Types::Common::String)
-- [MooseX::Types::Common::Numeric](http://search.cpan.org/perldoc?MooseX::Types::Common::Numeric)
-- [MooseX::Types](http://search.cpan.org/perldoc?MooseX::Types)
-- [Moose::Util::TypeConstraints](http://search.cpan.org/perldoc?Moose::Util::TypeConstraints)
+- [MooseX::Types::Common::String](https://metacpan.org/pod/MooseX::Types::Common::String)
+- [MooseX::Types::Common::Numeric](https://metacpan.org/pod/MooseX::Types::Common::Numeric)
+- [MooseX::Types](https://metacpan.org/pod/MooseX::Types)
+- [Moose::Util::TypeConstraints](https://metacpan.org/pod/Moose::Util::TypeConstraints)
 
 # ORIGIN
 
-This distribution was extracted from the [Reaction](http://search.cpan.org/perldoc?Reaction) code base by Guillermo
+This distribution was extracted from the [Reaction](https://metacpan.org/pod/Reaction) code base by Guillermo
 Roditi (groditi).
 
 # AUTHORS
@@ -55,6 +55,7 @@ the same terms as the Perl 5 programming language system itself.
 
 # CONTRIBUTORS
 
+- Caleb Cushing <xenoterracide@gmail.com>
 - Dave Rolsky <autarch@urth.org>
 - Graham Knop <haarg@haarg.org>
 - Justin Hunter <justin.d.hunter@gmail.com>
