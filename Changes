@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - update configure_requires checking in Makefile.PL, add CONTRIBUTING file
 
 0.001010  2013-09-27 04:39:30Z
   - add incomplete prereq on Test::Warnings (haarg)
