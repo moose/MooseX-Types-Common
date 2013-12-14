@@ -13,30 +13,30 @@ Revision history for {{$dist->name}}
     characters (RT#84547)
   - repository moved to the github moose organization
 
-0.001008   2012-06-14 11:29:50 PDT
+0.001008   2012-06-14 18:29:50Z
   - Upper* and Lower* string types now accept non-alphabetic characters (Karen
     Etheridge)
 
-0.001007   2012-02-23 11:50EST
+0.001007   2012-02-23 16:50:00Z
   - remove Test::Exception from a test
 
-0.001006   2012-02-21 13:50EST
+0.001006   2012-02-21 18:50:00Z
   - fix POD per RT #75168
 
-0.001005   2012-02-19 20:45EST
+0.001005   2012-02-20 01:45:00Z
   - add NumericCode type, RT #74346
 
-0.001004   2011-12-05 23:30EST
+0.001004   2011-12-06 04:30:00Z
   - use Test::Fatal instead of Test::Exception (Justin Hunter)
   - Added {Lower,Upper}CaseSimpleStr and {Lower,Upper}CaseStr, RT #71133
 
-0.001003   2011-08-31 11:35EST
+0.001003   2011-08-31 16:35:00Z
   - The positive and negative number types mistakenly accepted zero. Reported
     by Eric Brine. RT #53234.
   - Added PositiveOrZero{Int,Num} and NegativeOrZero{Int,Num} types. (Dave
     Rolsky)
 
-0.001002   2010-02-22 17:00EST
+0.001002   2010-02-22 22:00:00Z
   - Add Test::Exception to the test_requires (RT#54357)
   - Warning when you try to import things from MooseX::Types::Common rather
     than one of the specific String/Numeric modules in the distribution.
