@@ -4,7 +4,6 @@ package MooseX::Types::Common;
 use strict;
 use warnings;
 use Carp qw/cluck/;
-use namespace::autoclean;
 
 sub import {
     my $self = shift;

@@ -18,7 +18,6 @@ use MooseX::Types -declare => [
 ];
 
 use MooseX::Types::Moose qw/Str/;
-use namespace::autoclean;
 
 subtype SimpleStr,
   as Str,
