@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.001012  2013-12-17 23:09:36Z
   - fully-qualified type names like MooseX::Types::Common::String::SimpleStr
     work again (removed in 0.001011)
 

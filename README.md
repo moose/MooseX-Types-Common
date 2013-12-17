@@ -4,7 +4,7 @@ MooseX::Types::Common - A library of commonly used type constraints
 
 # VERSION
 
-version 0.001011
+version 0.001012
 
 # SYNOPSIS
 
