@@ -4,7 +4,7 @@ package MooseX::Types::Common::String;
 use strict;
 use warnings;
 
-use MooseX::Types -declare => [
+use MooseX::Types 0.40 -declare => [
   qw(SimpleStr
      NonEmptySimpleStr
      NumericCode
@@ -18,6 +18,7 @@ use MooseX::Types -declare => [
 ];
 
 use MooseX::Types::Moose qw/Str/;
+use namespace::autoclean;
 
 subtype SimpleStr,
   as Str,

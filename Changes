@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - better fix for fully-qualified type names, made to MooseX::Types directly
 
 0.001012  2013-12-17 23:09:36Z
   - fully-qualified type names like MooseX::Types::Common::String::SimpleStr
