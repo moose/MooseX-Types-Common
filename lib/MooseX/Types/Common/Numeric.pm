@@ -4,7 +4,7 @@ package MooseX::Types::Common::Numeric;
 use strict;
 use warnings;
 
-use MooseX::Types 0.40 -declare => [
+use MooseX::Types -declare => [
   qw(PositiveNum PositiveOrZeroNum
      PositiveInt PositiveOrZeroInt
      NegativeNum NegativeOrZeroNum
@@ -13,7 +13,7 @@ use MooseX::Types 0.40 -declare => [
 ];
 
 use MooseX::Types::Moose qw/Num Int/;
-use namespace::autoclean;
+use if MooseX::Types->VERSION >= 0.42, 'namespace::autoclean';
 
 subtype PositiveNum,
   as Num,
