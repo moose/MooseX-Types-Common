@@ -1,3 +1,6 @@
+/.ackrc
 /.build/
-!.gitignore
-/MooseX-Types-Common-*
+!/.gitignore
+/.latest
+/MooseX-Types-Common-*/
+/MooseX-Types-Common-*.tar.gz
