@@ -54,7 +54,7 @@ subtype NumericCode,
 
 coerce NumericCode,
   from NonEmptySimpleStr,
-  via { my $code = $_; $code =~ s/[[:punct:]]//g; return $code };
+  via { my $code = $_; $code =~ s/[[:punct:][:space:]]//g; return $code };
 
 subtype Password,
   as NonEmptySimpleStr,
@@ -218,7 +218,7 @@ A coercion exists via C<uc> from C<NonEmptyStr>
 A C<Str> with no new-line characters that consists of only Numeric characters.
 Examples include, Social Security Numbers, Personal Identification Numbers, Postal Codes, HTTP Status
 Codes, etc. Supports attempting to coerce from a string that has punctuation
-in it ( e.g credit card number 4111-1111-1111-1111 ).
+or whitespaces in it ( e.g credit card number 4111-1111-1111-1111 ).
 
 =back
 
