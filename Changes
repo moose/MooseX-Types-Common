@@ -1,4 +1,6 @@
-Revision history for MooseX-Types-Common
+Revision history for {{$dist->name}}
+
+{{$NEXT}}
 
 0.001013  2015-03-28 22:16:00Z
   - better fix for fully-qualified type names, made to MooseX::Types directly
