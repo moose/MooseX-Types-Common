@@ -1,6 +1,8 @@
 package MooseX::Types::Common;
 # ABSTRACT: A library of commonly used type constraints
+
 our $VERSION = '0.001014';
+
 use strict;
 use warnings;
 use Carp ();

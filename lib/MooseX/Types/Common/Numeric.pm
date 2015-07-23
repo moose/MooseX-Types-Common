@@ -1,6 +1,8 @@
 package MooseX::Types::Common::Numeric;
 # ABSTRACT: Commonly used numeric types
+
 our $VERSION = '0.001014';
+
 use strict;
 use warnings;
 
