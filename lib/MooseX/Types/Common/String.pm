@@ -52,7 +52,14 @@ subtype NumericCode,
   message {
     'Must be a non-empty single line of no more than 255 chars that consists '
         . 'of numeric characters only'
-  };
+  },
+    ( $Moose::VERSION >= 2.0200
+        ? inline_as {
+            $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+                . qq{ $_[1] =~ m/^[0-9]+\$/ };
+        }
+        : ()
+    );
 
 coerce NumericCode,
   from NonEmptySimpleStr,
