@@ -188,39 +188,44 @@ default.
 
 =item * C<SimpleStr>
 
-A C<Str> with no new-line characters.
+A C<Str> with no new-line characters and length <= 255.
 
 =item * C<NonEmptySimpleStr>
 
-A C<Str> with no new-line characters and length > 0
+A C<SimpleStr> with length > 0.
 
 =item * C<LowerCaseSimpleStr>
 
-A C<Str> with no new-line characters, length > 0 and no uppercase characters
-A coercion exists via C<lc> from C<NonEmptySimpleStr>
+A C<NonEmptySimpleStr> with no uppercase characters. A coercion exists via
+C<lc> from C<NonEmptySimpleStr>.
 
 =item * C<UpperCaseSimpleStr>
 
-A C<Str> with no new-line characters, length > 0 and no lowercase characters
-A coercion exists via C<uc> from C<NonEmptySimpleStr>
+A C<NonEmptySimpleStr> with no lowercase characters. A coercion exists via
+C<uc> from C<NonEmptySimpleStr>.
 
 =item * C<Password>
 
+A C<NonEmptySimpleStr> with length > 3.
+
 =item * C<StrongPassword>
+
+A C<NonEmptySimpleStr> with length > 7 containing at least one non-alpha
+character.
 
 =item * C<NonEmptyStr>
 
-A C<Str> with length > 0
+A C<Str> with length > 0.
 
 =item * C<LowerCaseStr>
 
 A C<Str> with length > 0 and no uppercase characters.
-A coercion exists via C<lc> from C<NonEmptyStr>
+A coercion exists via C<lc> from C<NonEmptyStr>.
 
 =item * C<UpperCaseStr>
 
 A C<Str> with length > 0 and no lowercase characters.
-A coercion exists via C<uc> from C<NonEmptyStr>
+A coercion exists via C<uc> from C<NonEmptyStr>.
 
 =item * C<NumericCode>
 
