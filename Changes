@@ -1,8 +1,7 @@
 Revision history for MooseX-Types-Common
 
 {{$NEXT}}
-
-  - provide inlined version of NumericCode
+  - provide inlined version of NumericCode (Gregory Oschwald, GitHub PR#4)
 
 0.001013  2015-03-28 22:16:00Z
   - better fix for fully-qualified type names, made to MooseX::Types directly
