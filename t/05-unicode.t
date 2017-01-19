@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 use open qw(:std :utf8);
 
-use Test::More;
+use Test::More 0.88;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use MooseX::Types::Common::String -all;
