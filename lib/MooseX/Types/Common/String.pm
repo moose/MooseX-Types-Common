@@ -1,7 +1,7 @@
 package MooseX::Types::Common::String;
 # ABSTRACT:  Commonly used string types
 
-our $VERSION = '0.001014';
+our $VERSION = '0.001015';
 
 use strict;
 use warnings;
