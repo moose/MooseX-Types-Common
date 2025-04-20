@@ -1,7 +1,7 @@
 package MooseX::Types::Common::Numeric;
 # ABSTRACT: Commonly used numeric types
 
-our $VERSION = '0.001015';
+our $VERSION = '0.001016';
 
 use strict;
 use warnings;

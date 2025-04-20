@@ -2,7 +2,7 @@ package MooseX::Types::Common;
 # ABSTRACT: A library of commonly used type constraints
 # KEYWORDS: moose types classes objects constraints declare libraries strings numbers
 
-our $VERSION = '0.001015';
+our $VERSION = '0.001016';
 
 use strict;
 use warnings;

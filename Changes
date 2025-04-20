@@ -1,5 +1,7 @@
 Revision history for MooseX-Types-Common
 
+{{$NEXT}}
+
 0.001015  2025-04-20 16:59:58Z
   - fix warnings caused by Moose no longer being loaded (since MooseX::Types
     0.51)
