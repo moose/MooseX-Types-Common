@@ -14,6 +14,7 @@ use MooseX::Types -declare => [
      SingleDigit)
 ];
 
+use Moose ();
 use MooseX::Types::Moose qw/Num Int/;
 use if MooseX::Types->VERSION >= 0.42, 'namespace::autoclean';
 

@@ -19,6 +19,7 @@ use MooseX::Types -declare => [
      UpperCaseStr)
 ];
 
+use Moose ();
 use MooseX::Types::Moose qw/Str/;
 use if MooseX::Types->VERSION >= 0.42, 'namespace::autoclean';
 
